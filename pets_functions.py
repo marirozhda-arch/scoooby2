@@ -61,3 +61,32 @@ def update_pet_by_id(pets: list[Pet], pet: Pet) -> bool:
     find_pet.character = pet.character
 
     return True
+
+
+def delete_pet_by_id(pets: list[Pet], search_id: int) -> bool:
+   
+    find_pet = get_pet_by_id(pets, search_id)
+    if find_pet == None:
+        return False
+    pets.remove(find_pet)
+
+    return True
+
+def print_table_pets_header():
+
+   print(f"")
+
+def print_single_pet(pet: Pet):
+
+    print(f"")
+
+def print_all_pets(pets: list[Pet]):
+    
+    print_table_pets_header()
+
+
+    if len(pets) > 0:
+        for pet in pets:
+            print_single_pet(pet)
+    else:
+        print("Список животных пуст")

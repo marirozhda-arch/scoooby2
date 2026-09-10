@@ -55,3 +55,32 @@ def update_product_by_id(products: list[Product], product: Product) -> bool:
     
 
     return True
+
+def delete_product_by_id(products: list[Product], search_id: int) -> bool:
+   
+    find_product = get_product_by_id(products, search_id)
+    if find_product == None:
+        return False
+    products.remove(find_product)
+
+    return True
+
+def print_table_products_header():
+
+   print(f"")
+
+def print_single_product(product: Product):
+
+    print(f"")
+
+def print_all_products(products: list[Product]):
+    
+    print_table_products_header()
+
+
+    if len(products) > 0:
+        for product in products:
+            print_single_product(product)
+    else:
+        print("Список товаров пуст")
+
