@@ -2,6 +2,10 @@ from pet import Pet
 from console_helper import *
 import random
 import math
+from typing import List, Optional
+from moc import *
+
+
 
 energy = 0
 patience = 0
