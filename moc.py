@@ -30,6 +30,7 @@ mock_pets = [
         character=[6, 8, 7],
         id=1,
     ),
+    
     Pet(
         icon="🐱",
         name="Мурка",

@@ -74,11 +74,22 @@ def delete_pet_by_id(pets: list[Pet], search_id: int) -> bool:
 
 def print_table_pets_header():
 
-   print(f"")
+   print(
+        f"{'ИД':<5}"
+        f"{'Иконка':<1}"
+        f"{'Кличка':<20}"
+        f"{'Количество рождаемых детнышей за раз':<4}"
+        f"{'Особенности':<100}"
+        f"{'Возраст':<8}"
+        f"{'История':<50}"
+        f"{'Дата рождения':<12}"
+        f"{'Окрас':<50}"
+        f"{'Характеристики(дружелюбие, энергия, социализация)':<50}"
+    )
 
 def print_single_pet(pet: Pet):
 
-    print(f"")
+    print(f"{pet.id:<5}{pet.icon:<1}{pet.name:<20}{pet.breed:<4}{pet.diseases:<100}{pet.health_status:<12}{pet.story:<50}{pet.age:<12}{pet.color:<50}{pet.character:<50}")
 
 def print_all_pets(pets: list[Pet]):
     
@@ -90,3 +101,65 @@ def print_all_pets(pets: list[Pet]):
             print_single_pet(pet)
     else:
         print("Список животных пуст")
+        
+        
+def save_products_to_txt_file_for_print(products: list[Product], filename: str) -> bool:
+    try:
+        with open(filename, "w", encoding="utf-8") as file_out:
+            file_out.write("Карточки питомцов, которые ждут вашего внимания\n\n")
+                        
+            file_out.write(             
+            f"{'ИД':<5}"
+            f"{'Иконка':<1}"
+            f"{'Кличка':<20}"
+            f"{'Количество рождаемых детнышей за раз':<4}"
+            f"{'Особенности':<100}"
+            f"{'Возраст':<8}"
+            f"{'История':<50}"
+            f"{'Дата рождения':<12}"
+            f"{'Окрас':<50}"
+            f"{'Характеристики(дружелюбие, энергия, социализация)':<50}"
+            "\n")
+            
+            if len(products) > 0:
+                for product in products:
+                    file_out.write(
+                        f"{Pet.id:<5}"
+                        f"{Pet.icon:<15}"
+                        f"{Pet.name:<20}"
+                        f"{Pet.breed:<4}"
+                        f"{Pet.diseases:<100}"
+                        f"{Pet.health_status:<12}"
+                        f"{Pet.story:<50}"
+                        f"{Pet.age:<12}"
+                        f"{Pet.color:<50}"
+                        f"{Pet.character:<50}"
+                        "\n""\n"
+                    )
+            
+            print("Чтобы посмотреть следующуу карточку, нажмите Enter")
+            return True
+             
+    except OSError:
+        return False
+
+    return True
+
+for _ in range(count_products):
+     Pet.append(
+                    Pet(
+                        id=int(file_in.post()),
+                        icon=file_in.post().strip(),
+                        name=str(file_in.post()),
+                        breed=file_in.post().strip(),
+                        diseases=file_in.post().strip(),
+                        health_status=file_in.post().strip(),
+                        story=file_in.post().strip(),
+                        age=file_in.post().strip(),
+                        color=file_in.post().strip(),
+                        character=file_in.post().strip()
+                    )
+                )
+                        
+                    
+                
