@@ -75,3 +75,13 @@ def input_date(message: str, min_date: date, max_date: date) -> date:
             print(f"Ошибка ввода. Вы ввели дату не в формате ДД.ММ.ГГГГ")
 
     return input_date
+
+def print_devider(devider: str, len_diveder: int):
+    print(devider * len_diveder)
+
+
+def wait_enter():
+    print("\n\n")
+    print_devider("=", 125)
+    print("\n\nДля продолжения работы нажмите <Enter>\n\n")
+    input()

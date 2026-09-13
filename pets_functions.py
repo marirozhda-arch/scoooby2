@@ -11,7 +11,7 @@ def get_next_pet_id() -> int:
 
     return global_pet_id
 
-def input_product_data() -> Pet:
+def input_pet_data() -> Pet:
     icon = input_str()
     name = input_str()
     breed = input_int()

@@ -1,22 +1,9 @@
-from dataclasses import dataclass
+from dataclasses import dataclass,timedelta
 from datetime import date
 from typing import List, Optional
+from pet import Pet
+from product import Product
 
-@dataclass(slots=True)
-class Pet:
-    icon: str
-    name: str
-    breed: int
-    diseases: str
-    health_status: int
-    story: str
-    age: date
-    color: List[str]
-    character: List[int]   # [энергия, социализация, терпеливость]
-    id: Optional[int] = None
-
-
-# Примеры питомцев (12 штук)
 mock_pets = [
     Pet(
         icon="🐶",
@@ -164,3 +151,89 @@ mock_pets = [
     ),
 ]
 
+
+
+TODAY = date.today()
+
+mock_products = [
+    Product(
+        icon="🦴",
+        best_before_date=TODAY + timedelta(days=365),
+        name="Игрушка-кость резиновая",
+        category="Игрушки",
+        price=349,
+        rating=4.7,
+    ),
+    Product(
+        icon="🐕",
+        best_before_date=TODAY + timedelta(days=180),
+        name="Ошейник кожаный с застёжкой",
+        category="Ошейники и поводки",
+        price=1299,
+        rating=4.8,
+    ),
+    Product(
+        icon="🦮",
+        best_before_date=TODAY + timedelta(days=180),
+        name="Поводок-рулетка 5 м",
+        category="Ошейники и поводки",
+        price=1599,
+        rating=4.5,
+    ),
+    Product(
+        icon="🐾",
+        best_before_date=TODAY + timedelta(days=90),
+        name="Лежанка мягкая 60×50 см",
+        category="Лежанки и домики",
+        price=2899,
+        rating=4.9,
+    ),
+    Product(
+        icon="🧶",
+        best_before_date=TODAY + timedelta(days=730),
+        name="Домик-плед для кошки",
+        category="Лежанки и домики",
+        price=2199,
+        rating=4.6,
+    ),
+    Product(
+        icon="🐱",
+        best_before_date=TODAY + timedelta(days=365),
+        name="Когтеточка вертикальная",
+        category="Когтеточки",
+        price=1799,
+        rating=4.7,
+    ),
+    Product(
+        icon="🪮",
+        best_before_date=TODAY + timedelta(days=1825),
+        name="Щётка-пуходёрка для вычёсывания",
+        category="Уход и груминг",
+        price=459,
+        rating=4.4,
+    ),
+    Product(
+        icon="🥣",
+        best_before_date=TODAY + timedelta(days=1825),
+        name="Миска-непроливайка на резиновом основании",
+        category="Посуда",
+        price=799,
+        rating=4.6,
+    ),
+    Product(
+        icon="🐟",
+        best_before_date=TODAY + timedelta(days=365),
+        name="Игрушка-удочка с перьями",
+        category="Игрушки",
+        price=299,
+        rating=4.3,
+    ),
+    Product(
+        icon="🎒",
+        best_before_date=TODAY + timedelta(days=730),
+        name="Переноска-рюкзак с иллюминатором",
+        category="Переноски",
+        price=3499,
+        rating=4.5,
+    ),
+]
