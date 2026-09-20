@@ -27,7 +27,7 @@ def work_with_administrator_menu(pets: list[Pet],products: list[Product],list_co
         choosen_action = input_int("Выберите пункт меню: ", 0, 6)
 
         if choosen_action == 1:
-            print_all_pets(pets, list_color)
+            print_main_menu(pets)
 
         elif choosen_action == 2:
             search_id = input_int("Введите ID животного для поиска: ", 1, 2_000_000_000)
@@ -36,7 +36,8 @@ def work_with_administrator_menu(pets: list[Pet],products: list[Product],list_co
             if found_pet == None:
                 print(f"Животное с ID {search_id} не найдено")
             else:
-                print_single_pet(found_pet,list_color)
+
+                print_single_pet(found_pet, list_color)
         elif choosen_action == 3:
             print("Введите данные нового животного")
 
@@ -44,7 +45,7 @@ def work_with_administrator_menu(pets: list[Pet],products: list[Product],list_co
 
             new_pet.id = get_next_pet_id()
 
-            add_pet_to_list(pets, new_pet)
+            add_product_to_list(pets, new_pet)
 
             print("Карточка питомца успешно добавлена")
 
@@ -52,7 +53,7 @@ def work_with_administrator_menu(pets: list[Pet],products: list[Product],list_co
             update_id = input_int(
                 "Введите ID животного для обновления: ", 1, 2_000_000_000
             )
-            found_pet = get_pet_by_id(pets, update_id)
+            found_pet = get_product_by_id(products, update_id)
 
             if found_pet == None:
                 print(f"Животное с ID {update_id} не найдено")
@@ -89,61 +90,59 @@ def work_with_administrator_menu(pets: list[Pet],products: list[Product],list_co
                 print("5. Удалить аксессуар по ID")
                 print("0. Назад")
 
-                choosen_action = input_int("Выберите пункт меню: ", 0, 6)
+            if choosen_action == 1:
+                
+                print_main_menu(products)
 
-                if choosen_action == 1:
-                    
-                    print_all_products(products)
+            elif choosen_action == 2:
+                search_id = input_int("Введите ID товара для поиска: ", 1, 2_000_000_000)
+                found_product = get_product_by_id(products, search_id)
 
-                elif choosen_action == 2:
-                    search_id = input_int("Введите ID товара для поиска: ", 1, 2_000_000_000)
-                    found_product = get_product_by_id(products, search_id)
+                if found_product == None:
+                    print(f"Продукт с ID {search_id} не найден")
+                else:
+                    print_single_product(found_product)
+            elif choosen_action == 3:
+                print("Введите данные нового продукта")
 
-                    if found_product == None:
-                        print(f"Продукт с ID {search_id} не найден")
-                    else:
-                        print_single_product(found_product)
-                elif choosen_action == 3:
-                    print("Введите данные нового продукта")
+                new_product = input_product_data()
 
-                    new_product = input_product_data()
+                new_product.id = get_next_product_id()
 
-                    new_product.id = get_next_product_id()
+                add_product_to_list(products, new_product)
 
-                    add_product_to_list(products, new_product)
+                print("Товар успешно добавлен")
 
-                    print("Товар успешно добавлен")
+            elif choosen_action == 4:
+                update_id = input_int(
+                    "Введите ID товара для обновления: ", 1, 2_000_000_000
+                )
+                found_product = get_product_by_id(products, update_id)
 
-                elif choosen_action == 4:
-                    update_id = input_int(
-                        "Введите ID товара для обновления: ", 1, 2_000_000_000
-                    )
-                    found_product = get_product_by_id(products, update_id)
+                if found_product == None:
+                    print(f"Продукт с ID {update_id} не найден")
+                else:
+                    print("Введите новые данные для продукта ")
 
-                    if found_product == None:
-                        print(f"Продукт с ID {update_id} не найден")
-                    else:
-                        print("Введите новые данные для продукта ")
+                    update_product = input_product_data()
 
-                        update_product = input_product_data()
+                    update_product.id = update_id
 
-                        update_product.id = update_id
+                    update_product_by_id(products, update_product)
 
-                        update_product_by_id(products, update_product)
+                    print("Продукт успешно обновлён")
 
-                        print("Продукт успешно обновлён")
+            elif choosen_action == 5:
+                delete_id = input_int("Введите ID товара для удаления: ", 1, 2_000_000_000)
 
-                elif choosen_action == 5:
-                    delete_id = input_int("Введите ID товара для удаления: ", 1, 2_000_000_000)
+                is_deleted = delete_product_by_id(products, delete_id)
 
-                    is_deleted = delete_product_by_id(products, delete_id)
-
-                    if is_deleted == False:
-                        print(f"Продукт с ID {delete_id} не найден")
-                    else:
-                        print("Продукт успешно удалён")
-                elif choosen_action == 0:
-                    is_run2 = False
+                if is_deleted == False:
+                    print(f"Продукт с ID {delete_id} не найден")
+                else:
+                    print("Продукт успешно удалён")
+            elif choosen_action == 0:
+                is_run2 = False
 
 
         elif choosen_action == 0:
