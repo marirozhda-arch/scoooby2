@@ -75,3 +75,5 @@ def work_with_buyer_menu(pets: list[Pet],products: list[Product],list_color):
                     print("Товар успешно куплен")
         else:
             is_run = False
+
+        wait_enter()

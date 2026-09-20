@@ -102,7 +102,6 @@ def work_with_administrator_menu(pets: list[Pet],products: list[Product],list_co
                     if found_product == None:
                         print(f"Продукт с ID {search_id} не найден")
                     else:
-                        print_table_products_header()
                         print_single_product(found_product)
                 elif choosen_action == 3:
                     print("Введите данные нового продукта")

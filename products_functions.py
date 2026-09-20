@@ -1,6 +1,7 @@
 from product import Product
 from datetime import date
 from console_helper import *
+from moc import *
 
 global_product_id = 0
 
@@ -19,7 +20,10 @@ def input_product_data() -> Product:
         date.today())
     
     name = input_str("Введите название товара (от 1 до 25 символов): ", 1, 25)
-    category = input_str("Введите категорию товара (от 1 до 20 символов): ", 1, 20)
+    print("Доступные категории:")
+    for i, one_category in enumerate(CATEGORIES, start=1):
+        print(f"{i}. {one_category}")
+    category = input_int(f"Введите код категории (от 1 до {len(CATEGORIES)}): ", 1, len(CATEGORIES))
     price = input_int("Введите цену товара (от 1 до 10 000 000 руб.): ", 1, 10_000_000)
     rating = input_float("Введите рейтинг товара (от 1 до 5, можно дробный): ", 1, 5)
     amount = input_int(
@@ -59,7 +63,7 @@ def update_product_by_id(products: list[Product], product: Product) -> bool:
     find_product.category = product.category
     find_product.price = product.price
     find_product.rating = product.rating
-    
+    find_product.amount = product.amount
 
     return True
 
@@ -72,27 +76,11 @@ def delete_product_by_id(products: list[Product], search_id: int) -> bool:
 
     return True
 
-def print_table_products_header():
-
-
-    print(
-        f"{'ИД':<5}"
-        f"{'Иконка':<1}"
-        f"{'Кличка':<20}"
-        f"{'Количество рождаемых детнышей за раз':<4}"
-        f"{'Особенности':<100}"
-        f"{'Возраст':<8}"
-        f"{'История':<50}"
-        f"{'Дата рождения':<12}"
-        f"{'Окрас':<50}"
-        f"{'Характеристики(дружелюбие, энергия, социализация)':<50}"
-    )
-
 def print_single_product(product: Product):
     print_devider("=", 60)
     print(f"{product.icon}  {product.name}  (ID: {product.id})")
     print_devider("-", 60)
-    print(f"Категория: {product.category}")
+    print(f"Категория: {get_category_name(product.category)}")
     print(f"Цена: {product.price} руб.")
     print(f"Рейтинг: {product.rating} / 5")
     print(f"В наличии: {product.amount} шт.")

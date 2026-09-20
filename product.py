@@ -6,7 +6,7 @@ class Product:
     icon: str
     best_before_date: date
     name: str
-    category: str
+    category: int
     price: int
     rating: float
     amount: int

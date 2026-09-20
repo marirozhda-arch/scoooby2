@@ -162,7 +162,7 @@ mock_products = [
         icon="🦴",
         best_before_date=TODAY + timedelta(days=365),
         name="Игрушка-кость резиновая",
-        category="Игрушки",
+        category=1,
         price=349,
         rating=4.7,
         amount=25,
@@ -172,7 +172,7 @@ mock_products = [
         icon="🐕",
         best_before_date=TODAY + timedelta(days=180),
         name="Ошейник кожаный с застёжкой",
-        category="Ошейники и поводки",
+        category=2,
         price=1299,
         rating=4.8,
         amount=12,
@@ -182,7 +182,7 @@ mock_products = [
         icon="🦮",
         best_before_date=TODAY + timedelta(days=180),
         name="Поводок-рулетка 5 м",
-        category="Ошейники и поводки",
+        category=2,
         price=1599,
         rating=4.5,
         amount=8,
@@ -192,7 +192,7 @@ mock_products = [
         icon="🐾",
         best_before_date=TODAY + timedelta(days=90),
         name="Лежанка мягкая 60×50 см",
-        category="Лежанки и домики",
+        category=3,
         price=2899,
         rating=4.9,
         amount=5,
@@ -202,7 +202,7 @@ mock_products = [
         icon="🧶",
         best_before_date=TODAY + timedelta(days=730),
         name="Домик-плед для кошки",
-        category="Лежанки и домики",
+        category=3,
         price=2199,
         rating=4.6,
         amount=7,
@@ -212,7 +212,7 @@ mock_products = [
         icon="🐱",
         best_before_date=TODAY + timedelta(days=365),
         name="Когтеточка вертикальная",
-        category="Когтеточки",
+        category=4,
         price=1799,
         rating=4.7,
         amount=0,             # нет в наличии
@@ -222,7 +222,7 @@ mock_products = [
         icon="🪮",
         best_before_date=TODAY + timedelta(days=1825),
         name="Щётка-пуходёрка для вычёсывания",
-        category="Уход и груминг",
+        category=5,
         price=459,
         rating=4.4,
         amount=40,
@@ -232,7 +232,7 @@ mock_products = [
         icon="🥣",
         best_before_date=TODAY + timedelta(days=1825),
         name="Миска-непроливайка на резиновом основании",
-        category="Посуда",
+        category=6,
         price=799,
         rating=4.6,
         amount=18,
@@ -242,7 +242,7 @@ mock_products = [
         icon="🐟",
         best_before_date=TODAY + timedelta(days=365),
         name="Игрушка-удочка с перьями",
-        category="Игрушки",
+        category=1,
         price=299,
         rating=4.3,
         amount=1,             # почти закончилось
@@ -252,7 +252,7 @@ mock_products = [
         icon="🎒",
         best_before_date=TODAY + timedelta(days=730),
         name="Переноска-рюкзак с иллюминатором",
-        category="Переноски",
+        category=7,
         price=3499,
         rating=4.5,
         amount=3,
@@ -460,3 +460,32 @@ def get_breed_name(breed: int) -> str:
     if 1 <= breed <= len(BREEDS):
         return BREEDS[breed - 1]
     return "Неизвестная порода"
+
+
+CATEGORIES = [
+    "Игрушки",
+    "Ошейники и поводки",
+    "Лежанки и домики",
+    "Когтеточки",
+    "Уход и груминг",
+    "Посуда",
+    "Переноски",
+    "Одежда",
+    "Намордники",
+    "Шлейки",
+    "Адресники и жетоны",
+    "Лакомства",
+    "Витамины и добавки",
+    "Средства от блох и клещей",
+    "Наполнители для туалета",
+    "Туалеты и лотки",
+    "Клетки и вольеры",
+    "Аквариумы и террариумы",
+    "Колёса и тоннели",
+    "Расчёски и щётки",
+]
+
+def get_category_name(category: int) -> str:
+    if 1 <= category <= len(CATEGORIES):
+        return CATEGORIES[category - 1]
+    return "Неизвестная категория"

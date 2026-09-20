@@ -10,7 +10,6 @@ products: list[Product] = []
 list_color: list = ["Чёрный", "Белый", "Рыжий", "Серый", "Коричневый", "Пятнистый", "Полосатый", "Другой"]
 
 
-
 for prod in mock_products:
     add_product_to_list(products, prod)
 

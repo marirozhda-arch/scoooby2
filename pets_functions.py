@@ -104,7 +104,7 @@ def print_color(pet: Pet, list_color: list):
     colors = []
     for one_color in color:
         if isinstance(one_color, int):
-            colors.append(list_color[one_color])
+            colors.append(list_color[one_color - 1])
         else:
             colors.append(one_color)
 
