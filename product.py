@@ -9,4 +9,5 @@ class Product:
     category: str
     price: int
     rating: float
+    amount: int
     id: int | None = None

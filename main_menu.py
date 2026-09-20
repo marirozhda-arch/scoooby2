@@ -1,11 +1,11 @@
 from pet import Pet
 from console_helper import *
-from products_functions import *
+from pets_functions import *
 
 
-def print_pets(pets: list[Pet]):
+def print_pets(pets: list[Pet], list_color):
     print("Список животных в приюте")
-    print_all_products(pets)
+    print_all_pets(pets, list_color)
     print_devider("=", 125)
 
 
